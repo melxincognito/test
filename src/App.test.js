@@ -8,7 +8,7 @@ describe("App", () => {
     render(<App />);
     screen.debug();
     fireEvent.change(screen.getByRole("textbox"), {
-      target: { value: "JavaScript" },
+      target: { value: "Mel Incognito" },
     });
 
     screen.debug();
@@ -22,7 +22,7 @@ describe("App", () => {
     screen.debug();
 
     fireEvent.change(screen.getByRole("textbox"), {
-      target: { value: "JavaScript" },
+      target: { value: "Mel Incognito" },
     });
 
     screen.debug();
