@@ -10,11 +10,13 @@ describe("App", () => {
     render(<App />);
 
     await screen.findByText(/Signed in as/);
+    screen.debug();
 
     expect(screen.queryByText(/Searches for Mel Incognito/)).toBeNull();
 
     await userEvent.type(screen.getByRole("textbox"), "Mel Incognito");
     expect(screen.getByText(/Searches for Mel Incognito/)).toBeInTheDocument();
+    screen.debug();
   });
 });
 
