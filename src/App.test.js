@@ -15,10 +15,11 @@ describe("App", () => {
   });
 });
 // setting with an async event
+// dont forget to add await
 describe("App", () => {
   test("renders the App component", async () => {
     render(<App />);
-
+    await screen.findByText(/Signed in as/);
     screen.debug();
 
     fireEvent.change(screen.getByRole("textbox"), {
