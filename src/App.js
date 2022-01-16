@@ -1,10 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
 
 function App() {
+  const [search, setSearch] = React.useState("");
+
+  function handleChange(event) {
+    setSearch(event.target.value);
+  }
+
   return (
-    <div className="App">
-      <h1> hello </h1>
+    <div>
+      <Search value={search} onChange={handleChange}>
+        Search:
+      </Search>
+
+      <p>Searches for {search ? search : "..."}</p>
+    </div>
+  );
+}
+
+function Search({ value, onChange, children }) {
+  return (
+    <div>
+      <label htmlFor="search">{children}</label>
+      <input id="search" type="text" value={value} onChange={onChange} />
     </div>
   );
 }
