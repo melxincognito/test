@@ -14,18 +14,21 @@ describe("App", () => {
     screen.debug();
   });
 });
+
 // setting with an async event
 // dont forget to add await
 describe("App", () => {
   test("renders the App component", async () => {
     render(<App />);
     await screen.findByText(/Signed in as/);
-    screen.debug();
+    expect(screen.queryByText(/Searches for Mel Incognito/)).toBeNull(); //telling your test nothing should be in the document
 
     fireEvent.change(screen.getByRole("textbox"), {
       target: { value: "Mel Incognito" },
     });
 
-    screen.debug();
+    expect(
+      screen.queryByText(/Searches for Mel Incognito/)
+    ).toBeInTheDocument(); //searching for this after it's been rendered
   });
 });
