@@ -1,13 +1,30 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import App from "./App";
 
+// normal testing w fire event
 describe("App", () => {
-  test("renders App component", async () => {
+  test("renders App component", () => {
     render(<App />);
-    expect(screen.queryByText(/Signed in as/)).toBeNull();
     screen.debug();
-    expect(await screen.findByText(/Signed in as/)).toBeInTheDocument();
+    fireEvent.change(screen.getByRole("textbox"), {
+      target: { value: "JavaScript" },
+    });
+
+    screen.debug();
+  });
+});
+// setting with an async event
+describe("App", () => {
+  test("renders the App component", async () => {
+    render(<App />);
+
+    screen.debug();
+
+    fireEvent.change(screen.getByRole("textbox"), {
+      target: { value: "JavaScript" },
+    });
+
     screen.debug();
   });
 });
